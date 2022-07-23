@@ -1,5 +1,3 @@
-from itertools import combinations
-
 s=input() # 문자열
 s_substring=[] # s의 부분문자열을 저장할 리스트
 
