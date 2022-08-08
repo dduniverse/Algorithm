@@ -1,7 +1,8 @@
-def fac(i):
-    if i==0: return 1
-    if i==1: return 1
-    return i*fac(i-1)
+def facotrial(i):
+    if i==0 or i==1:
+        return 1
+    for _ in range(i):
+        return i*facotrial(i-1)
 
 n=int(input())
-print(fac(n))
+print(facotrial(n))
