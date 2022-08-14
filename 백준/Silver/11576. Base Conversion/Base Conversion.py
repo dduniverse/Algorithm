@@ -2,9 +2,6 @@ a,b=map(int,input().split()) # a진법, b진법
 m=int(input()) # a진법을 이루고 있는 숫자 m개
 m_list=list(map(int,input().split()))
 
-a_num=[range(0,a)] 
-b_num=[range(0,b)]
-
 sum=0 # a진법 -> 10진법으로 바꾼 수
 for i in range(m):
     sum+=m_list[i]*(a**(m-i-1))
