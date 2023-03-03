@@ -1,4 +1,8 @@
 def solution(my_string, letter):
     answer = ''
-    answer = ''.join([i for i in my_string if i not in letter])
+    
+    for i in my_string:
+        if i != letter:
+            answer += i
+            
     return answer
