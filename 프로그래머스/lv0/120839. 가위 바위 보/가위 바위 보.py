@@ -1,6 +1,6 @@
 def solution(rsp):
     answer = ''
-    for i in str(rsp):
+    for i in rsp:
         if i == '2':
             answer += '0'
         elif i == '0' :
