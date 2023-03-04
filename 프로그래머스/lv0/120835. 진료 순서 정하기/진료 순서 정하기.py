@@ -1,11 +1,7 @@
 def solution(emergency):
-    answer = [0] * len(emergency)
+    answer = []
     
     sort = sorted(emergency, reverse=True)
+    answer = [sort.index(i) + 1 for i in emergency]         
     
-    for i in range(len(emergency)):
-        for j in range(len(sort)):
-            if emergency[i] == sort[j]:
-                answer[i] = j + 1
-                
     return answer
