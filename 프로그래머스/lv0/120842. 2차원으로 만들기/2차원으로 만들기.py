@@ -1,5 +1,6 @@
+import numpy as np
+
 def solution(num_list, n):
-    answer = []
-    for i in range(len(num_list)//n):
-        answer.append(num_list[n*i : n*(i+1)])
-    return answer
+    answer = np.array(num_list)
+    answer = answer.reshape(-1, n)
+    return answer.tolist()
