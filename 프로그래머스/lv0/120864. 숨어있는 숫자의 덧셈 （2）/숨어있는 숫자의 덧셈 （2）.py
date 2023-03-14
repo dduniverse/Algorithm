@@ -1,5 +1,3 @@
-import re
-
 def solution(my_string):
     for i in my_string:
         if i.isalpha():
