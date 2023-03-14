@@ -1,6 +1,9 @@
 import re
 
 def solution(my_string):
-    num = re.findall(r'\d+', my_string)
-    num = list(map(int, num))
-    return sum(num)
+    for i in my_string:
+        if i.isalpha():
+            my_string = my_string.replace(i, ' ')
+    my_string = my_string.split()
+    
+    return sum(list(map(int, my_string)))
