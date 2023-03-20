@@ -1,5 +1,2 @@
 def solution(s):
-    s = s.lower()
-    if s.count('p') == s.count('y'):
-        return True
-    return False
+    return s.lower().count('p') == s.lower().count('y')
