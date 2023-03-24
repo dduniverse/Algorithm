@@ -1,12 +1,11 @@
 def solution(s):
-    answer = []
+    answer = ''
     s = s.split(' ')
     for word in s:
-        temp = ''
         for i in range(len(word)):
             if i % 2 == 0:
-                temp += word[i].upper()
+                answer += word[i].upper()
             else:
-                temp += word[i].lower()
-        answer.append(temp)
-    return ' '.join(answer)
+                answer += word[i].lower()
+        answer += ' '
+    return answer[:-1]
