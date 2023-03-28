@@ -4,5 +4,5 @@ def solution(s):
     
     for i in ndict:
         if i in s:
-            s = s.replace(i, ndict.get(i))
+            s = s.replace(i, ndict[i])
     return int(s)
