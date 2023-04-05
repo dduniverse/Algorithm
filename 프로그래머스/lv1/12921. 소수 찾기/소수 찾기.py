@@ -1,5 +1,5 @@
 import math
-def yaksoo(n):
+def isPrime(n):
     if n==1: # 1은 약수가 아니므로 제외
         return False
     else:
@@ -11,7 +11,6 @@ def yaksoo(n):
 def solution(n):
     answer = 0
     for i in range(1, n+1):
-        if yaksoo(i):
+        if isPrime(i):
             answer += 1
     return answer
-            
