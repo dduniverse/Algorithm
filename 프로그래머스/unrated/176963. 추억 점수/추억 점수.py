@@ -6,5 +6,5 @@ def solution(name, yearning, photo):
                 pho[p] = nydict[pho[p]]
             else:
                 pho[p] = 0
-    
+        pho = sum(pho)
     return [sum(pho) for pho in photo]
