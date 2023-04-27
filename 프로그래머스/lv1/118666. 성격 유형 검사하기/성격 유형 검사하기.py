@@ -23,9 +23,4 @@ def solution(survey, choices):
             elif choices[i] > 4:  # 동의 관련 선택지
                 n4[survey[i][1]] += choices[i] - 4
     
-    answer = ''
-    answer += 'R' if n1['R'] >= n1['T'] else 'T'
-    answer += 'C' if n2['C'] >= n2['F'] else 'F'
-    answer += 'J' if n3['J'] >= n3['M'] else 'M'
-    answer += 'A' if n4['A'] >= n4['N'] else 'N'
-    return answer
+    return max(n1, key=n1.get)+max(n2, key=n2.get)+max(n3, key=n3.get)+max(n4, key=n4.get)
