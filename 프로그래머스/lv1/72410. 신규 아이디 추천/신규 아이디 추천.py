@@ -10,9 +10,9 @@ def solution(new_id):
             new_id = new_id.replace(i, '')
     
     # 3단계 ..., ..을 .으로 치환
-    new_id = new_id.replace('...', '.')
-    new_id = new_id.replace('..', '.')
-    new_id = re.sub('[.]+','.', new_id)
+    while '..' in new_id:
+        new_id = new_id.replace('..', '.')
+    #new_id = re.sub('[.]+','.', new_id)
     
     # 4단계: 처음 또는 끝에 위치한 . 제거
     new_id = new_id.strip('.')
