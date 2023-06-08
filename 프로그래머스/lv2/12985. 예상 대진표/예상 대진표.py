@@ -3,7 +3,9 @@ def solution(n,a,b):
     round = 0
     while a != b:
         round += 1
-        if a % 2 == 0:
+        a = (a + 1) // 2
+        b = (b + 1) // 2
+        """if a % 2 == 0:
             a = a // 2
         else:
             a = a // 2 + 1
@@ -11,6 +13,6 @@ def solution(n,a,b):
         if b % 2 == 0:
             b = b // 2
         else:
-            b = b // 2 + 1
+            b = b // 2 + 1"""
             
     return round
