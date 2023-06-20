@@ -7,7 +7,7 @@ def solution(cacheSize, cities):
             if city in cache: # 캐시에 존재할 때(cache hit) 최근 위치로 갱신
                 cache.remove(city)
                 cache.append(city)
-                cache = cache[:cacheSize]
+                cache = cache[-cacheSize:]
                 time += 1
             else: # 캐시에 존재하지 않으면(cache miss)
                 cache.append(city)
