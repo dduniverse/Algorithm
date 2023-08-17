@@ -1,12 +1,16 @@
 import sys
+input = sys.stdin.readline
 
-n = int(sys.stdin.readline())
-num=[0]*10001 # 10001개의 0으로 채워진 리스트
+n = int(input()) # 수의 개수
+    
+# 10001 크기의 num 값을 인덱스(id)로 하는 리스트 idx
+idx = [0] * 10001 # n개의 수는 10,000 이하의 수임
+for i in range(n):
+    idx[int(input())] += 1
 
-for i in range(n): # n개의 수 입력받기
-    num[int(sys.stdin.readline())]+=1 # 입력받은 숫자가 몇번 들어왔는지 num 리스트의 각 인덱스에 체크
-
-for i in range(10001):
-    if num[i]!=0: # 0이 아니면
-        for j in range(num[i]): # 해당 인덱스의 값 만큼(= 해당 숫자가 입력된 횟수) 그 수를 출력한다.
-            print(i)
+# idx를 처음부터 끝까지 탐색하면서 해당 값이 존재하면 id(=num값) 출력
+for id in range(10001):
+    if idx[id] > 0:
+        for _ in range(idx[id]):
+            print(id)
+            
