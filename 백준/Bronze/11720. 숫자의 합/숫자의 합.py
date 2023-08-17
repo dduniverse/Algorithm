@@ -1,8 +1,8 @@
-n=int(input())
-numbers=input()
-sum=0
+n = int(input())
+n_num = input()
 
-for num in numbers:
-    sum=sum+int(num)
-
-print(sum)
+hap = 0
+for i in n_num:
+    hap += int(i)
+    
+print(hap)
