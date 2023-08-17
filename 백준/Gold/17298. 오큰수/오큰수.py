@@ -1,15 +1,12 @@
-import sys
+n = int(input()) # 수열 A의 크기
+arr = list(map(int, input().split())) # 수열 A의 N개의 수
 
-n=int(sys.stdin.readline())
-a=list(map(int,sys.stdin.readline().split()))
-
-stack=[] # 인덱스 번호
-res=[-1]*n # 미리 n개의 -1로 된 배열을 생성함
-
+stack = []
+answer = [-1] * n # 오큰수
 for i in range(n):
-    while len(stack)>0 and a[stack[-1]]<a[i]:
-        res[stack.pop()]=a[i]
-    
-    stack.append(i)
+    while stack and stack[-1][1] < arr[i]: # 오큰수 조건
+        idx, value = stack.pop()
+        answer[idx] = arr[i] # answer의 해당 idx 위치에 오큰수 저장장
+    stack.append((i, arr[i])) # (idx, value) 추가
 
-print(*res) # *을 리스트 앞에 붙여 출력하면 원소들을 자동으로 띄어쓰기해서 출력해줌
+print(*answer)
