@@ -1,32 +1,33 @@
-import sys
-input = sys.stdin.readline
+n, m = map(int, input().split()) # n개의 수, M으로 나누기
+A = list(map(int, input().split())) # n개의 수로 이루어진 원본 배열
 
-n, m = map(int, input().split()) # n: 수의 개수
-arr = list(map(int, input().split())) # 원본배열: n개의 수
+S = [] # 합 배열
+M = [] # 합 배열 S를 M으로 나눈 나머지
 
-answer = 0 # M으로 나누어 떨어지는 구간의 개수
+answer = 0 # M으로 나눠지는 (i, j) 쌍의 개수
 
-prefix_sum = [] # 합배열 S
-mdsum = [] # 합배열 S를 M으로 나눈 나머지 배열
-temp = 0 # 누적합 
-for i in arr:
+temp = 0
+for i in A:
     temp += i
-    prefix_sum.append(temp) # 합배열에 누적합 저장
+    S.append(temp) # 누적 합
     
-    mtemp = temp % m
-    mdsum.append(mtemp) # 합배열을 m으로 나눈 나머지 저장
+    M.append(temp % m) # 누적 합 % m
     
-    if mtemp == 0:
+    # 나누어 떨어지면(i에서 i 구간) answer +1
+    if temp % m == 0:
         answer += 1
     
-mod = [0] * m  # m으로 나눴을 때의 나머지(최소 0~2)
-for i in mdsum:
-    mod[i] += 1
+# (i, j) 구간 합이 m으로 나누어 떨어지면
+# (S[j]-S[i-1]) % m == 0 이므로 S[j] % m == S[i-1] % m 
+# 즉, M[j] == M[i-1]이면 (i, j) 구간 합이 m으로 나누어 떨어진다
+# 누적합의 나머지가 같은 인덱스 중에 2개를 뽑는 경우의 수 
 
-# 같은 나머지 중 2개를 뽑는 경우 iC2
-for i in mod:
-    if i > 1:
-        comb = (i * (i-1)) // 2
-        answer += comb
-        
+# 나머지의 개수 파악(m=3이면 나머지는 0, 1, 2 셋 중 하나)
+mod_count = [0] * m
+for i in M:
+    mod_count[i] += 1
+    
+for i in mod_count:
+    answer += i * (i-1) // 2 # i개 중에 2개를 뽑는 경우의 수(2C1)
+
 print(answer)
