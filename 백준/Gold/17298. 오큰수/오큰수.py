@@ -1,12 +1,14 @@
-n = int(input()) # 수열 A의 크기
-arr = list(map(int, input().split())) # 수열 A의 N개의 수
+n = int(input())
+A = list(map(int, input().split()))
 
+nge = [-1 for _ in range(n)] # 오큰수
 stack = []
-answer = [-1] * n # 오큰수
-for i in range(n):
-    while stack and stack[-1][1] < arr[i]: # 오큰수 조건
+for i, a in enumerate(A):
+    # 스택의 마지막 원소보다 a가 크면 pop 연산 및 오큰수 저장
+    while stack and stack[-1][1] < a:
         idx, value = stack.pop()
-        answer[idx] = arr[i] # answer의 해당 idx 위치에 오큰수 저장장
-    stack.append((i, arr[i])) # (idx, value) 추가
+        nge[idx] = a
+    
+    stack.append((i, a)) # (인덱스, 원소) 형식으로 추가
 
-print(*answer)
+print(*nge)
