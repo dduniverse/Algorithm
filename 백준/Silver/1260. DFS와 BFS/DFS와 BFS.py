@@ -1,44 +1,48 @@
+import sys
 from collections import deque
-
-dfs_result = [] # dfs 결과 저장
-def dfs(graph, v, visited):
-    visited[v] = True # 방문했으면 True로 바꾸고 result에 저장
-    dfs_result.append(v)
-    for i in graph[v]: # 인접 노드 순차적으로 방문
-        if not visited[i]:
-            dfs(graph, i, visited)
-
-bfs_result = []
-def bfs(graph, start, visited):
-    queue = deque([start])
-    visited[start] = True
-
-    while(queue): # queue가 빌 때까지 반복
-        v = queue.popleft() # queue에서 하나씩 가져오고, result에 추가
-        bfs_result.append(v)
-
-        for i in graph[v]: # 인접 노드 순차적으로 방문
-            if not visited[i]:
-                queue.append(i)
-                visited[i] = True
+input = sys.stdin.readline
 
 
-n, m, v = map(int, input().split()) # 정점의 개수, 간선의 개수, 시작 번호
+n, m, v = map(int, input().split()) # 정점의 개수, 간선의 개수, 탐색 시작 정점 번호
+
+# 그래프 정보
 graph = [[] for _ in range(n+1)]
-
-for i in range(1, m+1): # 연결된 노드 정보 추가
+for i in range(m):
     a, b = map(int, input().split())
     graph[a].append(b)
     graph[b].append(a)
+    graph[a].sort()
+    graph[b].sort()
 
-for i in range(n+1): # 오름차순으로 인접노드 방문하기 위해 정렬
-    graph[i].sort()
+# 방문 정보
+d_visited = [False for _ in range(n+1)]
+b_visited = [False for _ in range(n+1)]
 
+# DFS 함수
+def DFS(x):
+    d_visited[x] = True
+    print(x, end=' ')
+    
+    for i in graph[x]:
+        if not d_visited[i]:
+            DFS(i)
 
-visited = [False] * (n+1)
-dfs(graph, v, visited)
-print(*dfs_result)
+# BFS 함수 
+def BFS(x):
+    queue = deque()
+    queue.append(x)
+    
+    b_visited[x] = True
+    
+    while queue:
+        n = queue.popleft()
+        print(n, end=' ')
+        for i in graph[n]:
+            if not b_visited[i]:
+                b_visited[i] = True
+                queue.append(i)
 
-visited = [False] * (n+1)
-bfs(graph, v, visited)
-print(*bfs_result)
+# 출력
+DFS(v)
+print()           
+BFS(v)
