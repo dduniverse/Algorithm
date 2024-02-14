@@ -15,7 +15,7 @@ while start <= end:
     now = houses[0] # 현재 집 위치
     count = 1 # now에 공유기 한 개 설치
 
-    # 현재집 위치+거리보다 더 멀리 위치한 집이면 공유기를 설치하고 현재 집 위치를 houses[i]로 변경
+    # 현재집 위치+거리보다 더 멀리 위치한 집이면 공유기를 설치하고 해당 위치를 현재 집으로 변경
     for i in range(n):
         if houses[i] >= now + mid: 
             count += 1
