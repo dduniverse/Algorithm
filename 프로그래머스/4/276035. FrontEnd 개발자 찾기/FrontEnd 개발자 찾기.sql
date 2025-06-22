@@ -1,0 +1,6 @@
+SELECT DISTINCT B.ID, B.EMAIL, B.FIRST_NAME, B.LAST_NAME -- 한 명의 개발자가 여러개의 프론트 기술을 보유할 수 있기 때문(& 연산에 의해)
+FROM SKILLCODES A
+RIGHT JOIN DEVELOPERS B
+ON B.SKILL_CODE & A.CODE = A.CODE  -- AND 비트연산 했을 때, B.SKILL_CODE가 A.CODE를 보유하고 있음
+WHERE CATEGORY = 'Front End'
+ORDER BY B.ID ASC
